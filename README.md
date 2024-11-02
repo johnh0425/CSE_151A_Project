@@ -1,4 +1,4 @@
-# CSE 151A Group Project [Open in Colab](https://colab.research.google.com/drive/19ArXW2768P2VxWBXff0s5CjbLbCtjqJk?usp=sharing)
+# CSE 151A Group Project <a target="_blank" href="https://colab.research.google.com/github/brandoluu/CSE_151A_Project/blob/main/CSE151A_Project.ipynb"> <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/> </a>
 
 ## Milestone 2
 
