@@ -1,2 +1,2 @@
-# CSE_151A_Project
-Project for CSE 151A Fall 2023
+# CSE 151A Group Project ![Open in Colab](https://colab.research.google.com/drive/19ArXW2768P2VxWBXff0s5CjbLbCtjqJk?usp=sharing)
+# 
