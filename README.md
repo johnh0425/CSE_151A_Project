@@ -7,6 +7,10 @@ The dataset contains 16 different subdirectories, each containing different audi
 1.  `n_instruments`: the number of unique instruments in the file
 2.  `tempo_estimate`: the estimated tempo of the file
 3.  `program_numbers`: the unique integer value corresponding to the type of instrument used in the file. The list of program numbers can be found [here](https://midiprog.com/program-numbers/)
+4.  `key numbers`: list of key value integers which represent the key signatures in the file
+5.  `time_signature_changes`: list containing time signature changes in file (e.g.: 4/4 represents 4 beats in each measure (denoted by numerator) and the note value that represents 1 beat (denoted by denominator). In this example the 4 quarter-note beats is commonly used in many genres like classical, pop, and rock.)
+6.  `end_time`: duration of the music piece
+7.  `tempo`: a list of tempos (beats per minute) found in the file
 
 ### Preprocessing:
 As mentioned in the data exploration section we have noticed that a lot of the entries contain corrupted audio files. We have decided to drop these entries as the dataset already contains a lot of entries. The files should already follow the [Standard MIDI Format](https://majicdesigns.github.io/MD_MIDIFile/page_smf_definition.html#:~:text=Standard%20MIDI%20File%20Format,page%20authoring%20and%20greeting%20cards.), so we do not need to do any additional standardization. We will not implement any encoding methods since all of the values we will be examining are continuous values.   
