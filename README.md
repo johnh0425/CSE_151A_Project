@@ -14,3 +14,6 @@ The dataset contains 16 different subdirectories, each containing different audi
 
 ### Preprocessing:
 As mentioned in the data exploration section we have noticed that a lot of the entries contain corrupted audio files. We have decided to drop these entries as the dataset already contains a lot of entries. The files should already follow the [Standard MIDI Format](https://majicdesigns.github.io/MD_MIDIFile/page_smf_definition.html#:~:text=Standard%20MIDI%20File%20Format,page%20authoring%20and%20greeting%20cards.), so we do not need to do any additional standardization. We will not implement any encoding methods since all of the values we will be examining are continuous values.   
+
+## Milestone 3
+To refine and get the genre associated with the midi files, we had to extract the genre based on the given ID using the following [file](https://www.ifs.tuwien.ac.at/mir/msd/partitions/msd-MAGD-genreAssignment.cls). 
