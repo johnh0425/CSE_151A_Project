@@ -59,7 +59,9 @@ For this model we attempted to try 2 different methods. We tried a KNN model usi
 - Testing MSE: 9.66
 - Training MAE: 0.02
 - Testing MAE: 1.80
-This places our model at the end of the graph with there being a very large difference in our training error and testing error. This is likely due to our training data is being heavily overfitted.
+
+![img](image.png)
+This places our model at the end of the graph with there being a very large difference in our training error and testing error. This is likely due to our training data being heavily overfitted.
 
 ### Next Models
 Feature reduction needs to be heavilt implemented as it is likely that the amount of features we have is causing a significant amount of noise in the models that is throwing them off. Possible other models are neural networks due to their ability to handle complex datasets or a return to SVMs as that performed well for us.
