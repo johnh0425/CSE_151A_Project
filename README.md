@@ -1,4 +1,4 @@
-# CSE 151A Group Project <a target="_blank" href="https://colab.research.google.com/github/brandoluu/CSE_151A_Project/blob/main/CSE151A_Project.ipynb"> <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/> </a>
+# CSE 151A Group Project <a target="_blank" href="https://colab.research.google.com/drive/19ArXW2768P2VxWBXff0s5CjbLbCtjqJk?usp=sharing"> <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/> </a>
 
 ## Milestone 2
 
@@ -15,5 +15,32 @@ The dataset contains 16 different subdirectories, each containing different audi
 ### Preprocessing:
 As mentioned in the data exploration section we have noticed that a lot of the entries contain corrupted audio files. We have decided to drop these entries as the dataset already contains a lot of entries. The files should already follow the [Standard MIDI Format](https://majicdesigns.github.io/MD_MIDIFile/page_smf_definition.html#:~:text=Standard%20MIDI%20File%20Format,page%20authoring%20and%20greeting%20cards.), so we do not need to do any additional standardization. We will not implement any encoding methods since all of the values we will be examining are continuous values.   
 
+
 ## Milestone 3
-To refine and get the genre associated with the midi files, we had to extract the genre based on the given ID using the following [file](https://www.ifs.tuwien.ac.at/mir/msd/partitions/msd-MAGD-genreAssignment.cls). 
+
+### Preprocessing:
+Before we began preprocessing the data, we first had to get the ground truth `genres`. In order to get our ground truth, we had to cross-reference the ID of the associated MIDI file with the following [link](https://www.ifs.tuwien.ac.at/mir/msd/partitions/msd-MAGD-genreAssignment.cls). We also used the helper function `compute_statistics(midi_file)` to get all of the features from a midi file to create our data frame, and any pieces of data that had any null values would be dropped from our dataset. From there we imputed both categorical and discrete features and scaled it to your then perform polynomial expansion. 
+
+### Training:
+For the training of our dataset, we first decided to use two support vector machines, a linear SVM and RBF SVM. Measuring the error of our model using MSE (Mean Squared Error), we got the following:  
+- Training Accuracy Linear MSE: 13.48
+- Testing Accuracy Linear MSE: 21.03
+- Training Accuracy Linear ACC: 0.69
+- Testing Accuracy Linear ACC: 0.52
+- Training Accuracy RBF MSE: 13.48
+- Testing Accuracy RBF MSE: 14.19
+- Training Accuracy RBF ACC: 0.69
+- Testing Accuracy RBF ACC: 0.63
+
+### Fitting Graph and Conclusions Made:
+Based on the following fitting graph: ![img](image.png)
+
+We have determined that our model is underfitted due to the similarities between the testing error and the training error. This is also supported by our decision boundaries from our SVM are warped and do not have distinct boundaries between different features. These decision boundaries were made between `n_instruments` and the other features of our dataset. 
+
+Some things we have considered for the next training step: 
+- Change the degree we used in polynomial expansion to see if a higher expansion would be beneficial to our model
+- Giving the classes a weight or removing the issue of class imbalance
+- randomizing our initial dataset more; `Pop_Rock` seems to be the primary genre in the dataset used in the first training step. 
+
+### Possible next model:
+From the results we have collected, we are considering implementing a decision tree because this model ignores class imbalance which fits our problem. 
