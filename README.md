@@ -66,3 +66,5 @@ Feature reduction needs to be heavilt implemented as it is likely that the amoun
 
 ### Conclusion
 Between model 1 and model 2 not many improvements were able to be made. Model 1 had an accuracy of 63% while Model 2 has an accuracy over 59% they are also both heavily guessing the dominant class of Pop_Rock rather than any other class. The overall accuracy went down and even accounting for the class imabalance the models do not seem to be improving. Both models have overfitting issues which still remain unresolved. In conclusion Model 2 has failed to make improvements and has actuall gotten worse compared to the previous model. This may be due to the svm being a better fit for our model since the number of features we have makes it overly complex. Reducing the number of features may allow the decision tree to improve.
+
+### FP + FN
