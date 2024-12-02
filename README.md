@@ -44,3 +44,19 @@ Some things we have considered for the next training step:
 
 ### Possible next model:
 From the results we have collected, we are considering implementing a decision tree because this model ignores class imbalance which fits our problem. 
+
+## Milestone 4
+Going into Milestone 4 our goals were to reduce the number of features and polish up the preprocessing as well find a way to deal with the class imabalance present in our data.
+
+### Preprocessing
+
+
+### Model
+For this model we attempted to try 2 different methods. We tried a KNN model using oversampling due to our data having a heavy class imbalance but that ended up not being successful due to issues with the class balance being too significant and an overabundance of features. The 2nd model we tried was a decision tree that used oversampling and a train-test split of 80-20. This gave us a testing accuracy of 61%.
+
+### Training Error vs. Testing Error
+- Training Error = 
+- Testing Error = 
+This places our model
+
+### Conclusion
