@@ -52,11 +52,17 @@ Going into Milestone 4 our goals were to reduce the number of features and polis
 
 
 ### Model
-For this model we attempted to try 2 different methods. We tried a KNN model using oversampling due to our data having a heavy class imbalance but that ended up not being successful due to issues with the class balance being too significant and an overabundance of features. The 2nd model we tried was a decision tree that used oversampling and a train-test split of 80-20. This gave us a testing accuracy of 61%.
+For this model we attempted to try 2 different methods. We tried a KNN model using oversampling due to our data having a heavy class imbalance but that ended up not being successful due to issues with the class balance being too significant and an overabundance of features. The 2nd model we tried was a decision tree that used oversampling and a train-test split of 80-20. This gave us a testing accuracy of 59%.
 
 ### Training Error vs. Testing Error
-- Training Error = 
-- Testing Error = 
-This places our model
+- Training MSE: 0.07
+- Testing MSE: 9.66
+- Training MAE: 0.02
+- Testing MAE: 1.80
+This places our model at the end of the graph with there being a very large difference in our training error and testing error. This is likely due to our training data is being heavily overfitted.
+
+### Next Models
+Feature reduction needs to be heavilt implemented as it is likely that the amount of features we have is causing a significant amount of noise in the models that is throwing them off. Possible other models are neural networks due to their ability to handle complex datasets or a return to SVMs as that performed well for us.
 
 ### Conclusion
+Between model 1 and model 2 not many improvements were able to be made. Model 1 had an accuracy of 63% while Model 2 has an accuracy over 59% they are also both heavily guessing the dominant class of Pop_Rock rather than any other class. The overall accuracy went down and even accounting for the class imabalance the models do not seem to be improving. Both models have overfitting issues which still remain unresolved. In conclusion Model 2 has failed to make improvements and has actuall gotten worse compared to the previous model. This may be due to the svm being a better fit for our model since the number of features we have makes it overly complex. Reducing the number of features may allow the decision tree to improve.
