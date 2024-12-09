@@ -176,10 +176,96 @@ Through feature extraction and the application of various preprocessing techniqu
 ### Model 1: SVM Results
 The first support vector machine using the linear kernel gave an accuracy 73% in training and 46% in testing. For the mean squared error used to evaluate the model’s loss in training the mean squared error was 5.8, while in testing the mean squared error was 19.73. We also visualized this support vector machine by plotting the decision boundaries between features outputting decision boundary plots such as the following:
 
-**TODO: ADD PHOTOS HERE**
 ![svm1](151Photos/SVM1:2.png)
 
-Using an rbf kernel for our second support vector machine yielded similar results with a training accuracy of 73% and testing accuracy of 50%. Along with this an mean squared error of 5.8 in training and 17.12 in testing
+![svm1](151Photos/SVM1:3.png)
+
+![svm1](151Photos/SVM1:4.png)
+
+![svm1](151Photos/SVM1:5.png)
+
+![svm1](151Photos/SVM1:6.png)
+
+Using an rbf kernel for our second support vector machine yielded similar results with a training accuracy of 73% and a testing accuracy of 50%. Along with this a mean squared error of 5.8 in training and 17.12 in testing
+
+### Model 2: KNN Results 
+After fitting the data to our KNN model we received an accuracy in the training of about 62% and an accuracy in the testing of about 59%. We used both regular k-fold cross-validation and stratified k-fold cross-validation. The k-fold validation returned worse results with a training accuracy of about 67%, but a testing accuracy of only about 24%. However, the stratified k-fold cross-validation yielded results more in line with the regular training results with about 62% training accuracy and 49% testing accuracy. This model was evaluated solely using mean squared error yielding a result of about 13 in training and about 18 in testing.
+
+![KNN](151Photos/KNN.png)
+
+### Model 3: Decision Tree Results
+The overall accuracy of our decision tree model in testing was about 59% and k-fold cross-validation yielded about the same results with a mean accuracy for the 10 folds being about 58%. When looking at the predictions that our tree model made the vast majority of them were pop_rock with 53 of the 56 total predictions being pop_rock while only 1 prediction was made for electronic, international, and jazz. The loss of our model was evaluated using both mean squared error and mean absolute error. In testing, we received a mean squared error of 0.07 and a mean absolute error of 0.02, while testing yielded a mean squared error of 9.66 and a mean absolute error of 1.8.
+
+![tree1](151Photos/tree1.png)
+![tree1](151Photos/tree2.png)
+
+## Discussion: 
+
+### Preprocessing:
+We first decided to use the full Lakh Midi Dataset, however we soon realized that the dataset didn’t have the genre associated with the files, so we had to cross reference the id of each file to a support file called match scores so we can append the genre to our dataset in the preprocessing phase. The information stored in a MIDI file is vast, some examples include: 
+
+1. Length of a song
+2. Number of instruments
+3. Tempo changes
+4.Time signature changes
+5. Key changes
+6. Lyrics
+
+And much more that can be derived from the contents of a MIDI file. After we looked at what we could derive and add to our dataset, we decided to incorporate 14 features in our dataset:
+Number of instruments
+
+1. Program numbers
+2. Key numbers
+3. Time signatures
+4. Drum Patterns
+5. End time
+6. Note counts
+7. Note durations
+8. Average velocities
+9. Does the song contain drums
+10. Average melodic interval
+11. Rhythmic variability
+12. Key modulations
+13. Tempo
+
+Because all of these features are continuous, we decided to impute the discrete features and scale the continuous features as our normalization technique along with other preprocessing techniques.  
+
+### Preprocessing 
+As mentioned previously, there were 14 features we were looking at. We first had to impute the discrete features and scale the continuous features using a minMax scaler. In addition we implemented polynomial expansion to our dataset.
+
+However, not all of these features proved to be useful, both from a computational standpoint and from a logical standpoint. The first feature that proved to be unhelpful was the drum patterns for a number of reasons. The first reason was from a data perspective, it was very difficult to parse and understand. There is no sense of timing and all the parsing does is grab the drum note and the pitch and put it into an array. Another reason was that, from a musical perspective, the drum patterns aren’t exactly indicators without more context. Multiple different genres can use similar drum patterns (rap and trap which would be classified as rap and electronic respectively is an example), and because of this, it can be unreliable. Combine that with the fact that our labeled dataset combined the pop and rock genres and subgenres, and we are left with a homogenized mix of data. Rock drum patterns are probably the most diverse and this being combined with pop which is almost on the other end of the scale, would lead to many problems in trying to classify songs.
+
+Another feature dropped was note counts, durations, and velocities. The reason for this is that these features do not show any indication as to what the genre of a song is. Note counts are only for each instrument which in of itself is quite unreliable as not all midi files handle instruments well with some files duplicating instruments and giving each different note counts. Also, note counts are naturally correlated with the length of track and do not necessarily show you what genre a song might be. Similarly, durations of these notes are more so related to the instruments themselves and thus redundant. Velocities also don’t matter as this is just, in a sense, how hard a note is pressed. From a logical standpoint, this has no real indication of a song’s genre as it doesn’t say much about the song itself in structure or complexity from a musical standpoint. 
+
+The key numbers feature also was changed, but not necessarily dropped. Instead of all the keys used in a track, we used the first key used for the song while keeping the number of key changes in another feature called key modulations. The reason for this was to simplify the encoding as well as it not making sense to have all the keys within a song. Typically, the first key in a song is the main key, though there are exceptions, but the idea is that the main key would be the main distinctive factor in many different songs as keys play a big role in the feel of a song. 
+
+**Model 1: SVM**
+
+With the SVM model, we chose the two different kernel models so that we could view how the data would perform on it. When run on different sample sizes we noticed that the model tended to perform better on the RBF model. This is likely because our data is very complex and non-linear so the linear model was not able to perform as well as the RBF model. However, we did notice that the RBF model was getting a high accuracy by primarily predicting just the Pop_Rock genre which prompted us to take a closer look at what our genre distribution really looked like. It was overwhelmingly Pop_Rock which showed us that we have a severe issue with class imbalance and that likely hurt the model. With no cross-validation or hyperparameter tuning this model could have likely performed better. We were unsatisfied with the results of our data so we wanted to implement methods to combat the class imbalance problem as well as include some form of cross-validation to diversify the data and hopefully get better results.
+
+**Model 2:  KNN**
+
+For the KNN model, we hoped that it would perform better since it is a good model for complex classification problems. KNN does tend to have issues with class imbalance however due to how it uses distance functions to try to group data points together. In an attempt to avoid this, we oversampled our data to balance it out so that each class was roughly equally represented in the data. We also perform K-Fold cross-validation to tune the data and get an average that would ideally give us better accuracy. However, despite our efforts the KNN model performed abysmally and was only achieving an accuracy of around 20%. We determined that we were likely suffering from a combination of the class imbalance being too problematic and feature bloat caused by too many features being used that were irrelevant and too much one-hot encoding. We could see this in our training accuracy being extremely high but our test/validation accuracy is extremely low. Our model was heavily suffering from overfitting the data. 
+
+**Model 3: Decision Tree**
+
+We settled on decision trees to be our third model since a major issue of our data is that there’s a massive class imbalance. We hoped that this model could remedy this situation as decision trees are more resistant to class imbalances. However, disappointingly this model didn’t do very great in terms of accuracy and massively overfit the data as seen in the massive disparity in the training and testing mean squared error and mean absolute error. This was probably due in part to the high dimensionality of our data causing there to be too many splits in the tree leading to the overfitting. We also did not perform hyperparameter fitting of the data only using a RandomTreeClassifier to attempt optimization. This model could have perhaps performed better had we done some pruning on the decision tree to remove splits and create a more generalizable decision tree.
+
+## Conclusion: 
+If we were to do the project all over again, we would do a deeper inspection of our dataset before choosing it. The dataset selected struggled to give us the information we needed for our goals so we had to supplement it with additional data that we combined with the primary set to make our predictions. Our dataset is also quite lackluster for prediction, suffering from heavy class imbalance and the information provided by it not being very informative or predictive of genres. Pop_Rock was heavily overrepresented in our dataset and that’s because Pop_Rock is a very broad genre of music that encapsulates almost everything. This made it extremely difficult during classification since many non Pop_Rock songs have Pop_Rock elements and vice versa. We would also choose to have less features and focus on the more relevant ones.  Prioritizing feature selection and conducting thorough feature importance analysis could have streamlined our models and improved their performance. A lot of the features chosen for our dataset were irrelevant and did not improve or contribute to our models. We would also dedicate more effort to fine-tuning our models. Limited hyperparameter optimization and a lack of iterative experimentation hindered our ability to improve model accuracy. In future iterations, we could employ techniques like gradient descent, experiment with alternative distance metrics, test different classifiers, and apply data transformations to enhance model performance. In conclusion, by providing more thought to the dataset selection, focusing on relevant features, and rigorous model optimization, we believe we could produce better results in future projects. 
+
+## Statement Of Collaboration: 
+
+**Zachary Thomason:** Member: Contributed to coding for all milestones, contributed to readme for milestones 4 and 5.
+
+**John Hsu:** Member: Contributed to coding in all milestones. Major contributor in data exploration and preprocessing. There was also a contribution in the readme for milestones 4 and 5.
+
+**Brandon Luu:** Member: contributed a little  to the development of models and provided input on what models to use and how we should structure the dataset. Mostly contributed tothe  documentation of the preprocessing and development of the models in the README for each milestone. 
+
+
+
+
+
 
 
 
