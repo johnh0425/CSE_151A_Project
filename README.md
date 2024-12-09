@@ -166,6 +166,7 @@ For our first model we chose SVMs which are a machine learning model that separa
 We selected the K-Nearest Neighbors (KNN) algorithm as our second model due to its effectiveness in classification tasks. KNN classifies data points by calculating the distances between them and assigning labels based on the majority class closest to them. This property makes KNN particularly suitable for our classification problem. To improve the effectiveness of this model we used oversampling and k-fold cross validation in order to optimize the models performance.
 
 **Model 3: Decision Tree**
+
 Our third model is Decision Trees using RandomTreeClassifier since they are inherently resistant to class imbalance due to classifying data based on feature values to create splits. Given the complexity of our dataset, we wanted to evaluate how effectively a Decision Tree could handle the classification task. Although Decision Trees are less sensitive to class imbalance, we still chose to oversample the data to create a more balanced dataset and potentially enhance the model's performance. Additionally, we applied k-fold cross-validation to evaluate the model across multiple splits of the data as well as evaluating it using an 80-20 train test split.
 
 ## Results: 
@@ -201,7 +202,7 @@ The overall accuracy of our decision tree model in testing was about 59% and k-f
 
 ## Discussion: 
 
-### Preprocessing:
+### Data Exploration:
 We first decided to use the full Lakh Midi Dataset, however we soon realized that the dataset didn’t have the genre associated with the files, so we had to cross reference the id of each file to a support file called match scores so we can append the genre to our dataset in the preprocessing phase. The information stored in a MIDI file is vast, some examples include: 
 
 1. Length of a song
@@ -212,25 +213,26 @@ We first decided to use the full Lakh Midi Dataset, however we soon realized tha
 6. Lyrics
 
 And much more that can be derived from the contents of a MIDI file. After we looked at what we could derive and add to our dataset, we decided to incorporate 14 features in our dataset:
-Number of instruments
 
-1. Program numbers
-2. Key numbers
-3. Time signatures
-4. Drum Patterns
-5. End time
-6. Note counts
-7. Note durations
-8. Average velocities
-9. Does the song contain drums
-10. Average melodic interval
-11. Rhythmic variability
-12. Key modulations
-13. Tempo
+1. Number of instruments
+2. Program numbers
+3. Key numbers
+4. Time signatures
+5. Drum Patterns
+6. End time
+7. Note counts
+8. Note durations
+9. Average velocities
+10. Does the song contain drums
+11. Average melodic interval
+12. Rhythmic variability
+13. Key modulations
+14. Tempo
 
 Because all of these features are continuous, we decided to impute the discrete features and scale the continuous features as our normalization technique along with other preprocessing techniques.  
 
 ### Preprocessing 
+
 As mentioned previously, there were 14 features we were looking at. We first had to impute the discrete features and scale the continuous features using a minMax scaler. In addition we implemented polynomial expansion to our dataset.
 
 However, not all of these features proved to be useful, both from a computational standpoint and from a logical standpoint. The first feature that proved to be unhelpful was the drum patterns for a number of reasons. The first reason was from a data perspective, it was very difficult to parse and understand. There is no sense of timing and all the parsing does is grab the drum note and the pitch and put it into an array. Another reason was that, from a musical perspective, the drum patterns aren’t exactly indicators without more context. Multiple different genres can use similar drum patterns (rap and trap which would be classified as rap and electronic respectively is an example), and because of this, it can be unreliable. Combine that with the fact that our labeled dataset combined the pop and rock genres and subgenres, and we are left with a homogenized mix of data. Rock drum patterns are probably the most diverse and this being combined with pop which is almost on the other end of the scale, would lead to many problems in trying to classify songs.
