@@ -165,7 +165,7 @@ For our first model we chose SVMs which are a machine learning model that separa
 
 We selected the K-Nearest Neighbors (KNN) algorithm as our second model due to its effectiveness in classification tasks. KNN classifies data points by calculating the distances between them and assigning labels based on the majority class closest to them. This property makes KNN particularly suitable for our classification problem. To improve the effectiveness of this model we used oversampling and k-fold cross validation in order to optimize the models performance.
 
-** Model 3: Decision Tree **
+**Model 3: Decision Tree**
 Our third model is Decision Trees using RandomTreeClassifier since they are inherently resistant to class imbalance due to classifying data based on feature values to create splits. Given the complexity of our dataset, we wanted to evaluate how effectively a Decision Tree could handle the classification task. Although Decision Trees are less sensitive to class imbalance, we still chose to oversample the data to create a more balanced dataset and potentially enhance the model's performance. Additionally, we applied k-fold cross-validation to evaluate the model across multiple splits of the data as well as evaluating it using an 80-20 train test split.
 
 ## Results: 
