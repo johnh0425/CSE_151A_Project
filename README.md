@@ -177,6 +177,7 @@ Through feature extraction and the application of various preprocessing techniqu
 The first support vector machine using the linear kernel gave an accuracy 73% in training and 46% in testing. For the mean squared error used to evaluate the model’s loss in training the mean squared error was 5.8, while in testing the mean squared error was 19.73. We also visualized this support vector machine by plotting the decision boundaries between features outputting decision boundary plots such as the following:
 
 **TODO: ADD PHOTOS HERE**
+![svm1](151Photos/SVM1:2.png)
 
 Using an rbf kernel for our second support vector machine yielded similar results with a training accuracy of 73% and testing accuracy of 50%. Along with this an mean squared error of 5.8 in training and 17.12 in testing
 
