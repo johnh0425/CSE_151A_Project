@@ -260,7 +260,9 @@ If we were to do the project all over again, we would do a deeper inspection of 
 
 **John Hsu:** Member: Contributed to coding in all milestones. Major contributor in data exploration and preprocessing. There was also a contribution in the readme for milestones 4 and 5.
 
-**Brandon Luu:** Member: contributed a little  to the development of models and provided input on what models to use and how we should structure the dataset. Mostly contributed tothe  documentation of the preprocessing and development of the models in the README for each milestone. 
+**Brandon Luu:** Member: contributed a little  to the development of models and provided input on what models to use and how we should structure the dataset. Mostly contributed to the  documentation of the preprocessing and development of the models in the README for each milestone. 
+
+**Daniel Arevalo:** Member: Contributed to coding for the milestones and milestone 5's readme.
 
 
 
