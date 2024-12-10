@@ -264,6 +264,8 @@ If we were to do the project all over again, we would do a deeper inspection of 
 
 **Daniel Arevalo:** Member: Contributed to coding for the milestones and milestone 5's readme.
 
+**Jordan Huynh:** Member: Contributed to preprocessing and model creation/debugging for milestone 3 and 4 as well as the final milestone. Wrote large parts of preprocessing section of final writeup. Helped with model selection and analysis of models and results.  
+
 
 
 
