@@ -256,7 +256,7 @@ If we were to do the project all over again, we would do a deeper inspection of 
 
 ## Statement Of Collaboration: 
 
-**Zachary Thomason:** Member: Contributed to coding for all milestones, contributed to readme for milestones 4 and 5.
+**Zachary Thomason:** Member: Provided majority of code for models 1 and 2. Helped with model 3. Contributed to readme for milestones 4. Wrote model sections of the final writeup, discussion sections for models 1 & 2, and created figures for KNN and Decision trees.
 
 **John Hsu:** Member: Contributed to coding in all milestones. Major contributor in data exploration and preprocessing. There was also a contribution in the readme for milestones 4 and 5.
 
