@@ -262,7 +262,7 @@ If we were to do the project all over again, we would do a deeper inspection of 
 
 **Brandon Luu:** Member: contributed a little  to the development of models and provided input on what models to use and how we should structure the dataset. Mostly contributed to the  documentation of the preprocessing and development of the models in the README for each milestone. 
 
-**Daniel Arevalo:** Member: Contributed to coding for the milestones and milestone 5's readme.
+**Daniel Arevalo:** Member: Contributed to coding the models and result analysis for the milestones. Additionally contributed to milestone 5's readme writing the results section and the discussion on the decision tree model.
 
 **Jordan Huynh:** Member: Contributed to preprocessing and model creation/debugging for milestone 3 and 4 as well as the final milestone. Wrote large parts of preprocessing section of final writeup. Helped with model selection and analysis of models and results.  
 
